@@ -13,8 +13,24 @@
 #Perl 
 
 FROM perl:5.26
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
-CMD [ "perl", "./your-daemon-or-script.pl" ]
+COPY . /usr/src/convading
+WORKDIR /usr/src/convading
+CMD [ "perl"]
 
-#P
+#Install samtools (from biocontainers/samtools dockerfile)
+
+RUN conda install samtools=1.3.1
+WORKDIR /data/
+
+CMD ["samtools"]
+
+# add samtools and perl to path
+ENV PATH=/my-software/samtools/:$PATH \
+    PERL_PATH=~/perl \
+    PERLLIB=$PERL_PATH/lib/perl:$PERL_PATH/lib/perl/x86_64-linux-thread-multi
+
+
+# install Normality package
+RUN cpanm --notest -l $PERL_PATH \
+    Statistics::Normality \
+   
