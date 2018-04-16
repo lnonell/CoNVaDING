@@ -14,6 +14,10 @@
 
 FROM perl:5.26
 
+# install Normality package
+RUN cpanm --notest -l $PERL_PATH \
+    Statistics::Normality \
+
 #Install and Configure samtools
 RUN wget http://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar.bz2
 RUN tar --bzip2 -xf samtools-1.5.tar.bz2
@@ -23,7 +27,5 @@ RUN make
 RUN rm /bin/samtools-1.5.tar.bz2
 ENV PATH $PATH:/bin/samtools-1.5
 
-# install Normality package
-RUN cpanm --notest -l $PERL_PATH \
-    Statistics::Normality \
+
   
