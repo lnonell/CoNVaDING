@@ -10,13 +10,20 @@
 # Mantainer:        Lara Nonell
 #################################################################
 
-#Perl 
+FROM ubuntu:14.04
 
-FROM perl:5.26
+# Update the repository sources list
+RUN apt-get update
 
-# install Normality package
-#RUN cpanm --notest -l $PERL_PATH \
-#    Statistics::Normality
+# Install compiler and perl stuff
+RUN apt-get install --yes \
+build-essential \
+gcc-multilib \
+apt-utils \
+perl \
+expat \
+libexpat-dev 
+
 RUN apt-get install -y cpanminus
 RUN cpanm Statistics::Normality
 
