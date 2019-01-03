@@ -17,8 +17,8 @@ FROM perl:5.26
 # install Normality package
 #RUN cpanm --notest -l $PERL_PATH \
 #    Statistics::Normality
-RUN curl -L http://cpanmin.us | perl - App::cpanminus
-RUN cpanm Carton Statistics::Normality
+RUN apt-get install -y cpanminus
+RUN cpanm Statistics::Normality
 
 #Install and Configure samtools
 RUN wget http://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar.bz2
