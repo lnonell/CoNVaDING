@@ -25,6 +25,4 @@ expat \
 libexpat-dev 
 
 RUN apt-get install -y cpanminus
-RUN cpanm CPAN::Meta \ 
-Statistics::Normality
-
+RUN cpanm CPAN::Meta 
