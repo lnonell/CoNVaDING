@@ -35,5 +35,10 @@ RUN tar --bzip2 -xf samtools-1.5.tar.bz2
 WORKDIR /bin/samtools-1.5
 ENV PATH $PATH:/bin/samtools-1.5
 
+RUN wget https://github.com/molgenis/CoNVaDING/archive/1.2.1.tar.gz
+RUN tar -xf 1.2.1.tar.gz
+WORKDIR /bin/CoNVaDING-1.2.1
+ENV PATH $PATH:/bin/CoNVaDING-1.2.1
+
 #Set WorkingDir
 WORKDIR /
